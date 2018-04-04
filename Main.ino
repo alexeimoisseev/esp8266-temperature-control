@@ -26,8 +26,7 @@ void setup() {
 }
 
 bool fanOn = false;
-void checkTemp() {
-  float temp = temperature.getTemp();
+void checkTemp(float temp) {
   if (!fanOn && temp > targetTemperature + 0.5) {
     fanOn = true;
     digitalWrite(D5, HIGH);
@@ -40,7 +39,7 @@ void checkTemp() {
 void loop() {
   float temp = temperature.getTemp();
   Serial.println(temp);
-  checkTemp();
+  checkTemp(temp);
   pubsub->sendTemp(temp);
   lcd.print(temp, targetTemperature, fanOn);
 
