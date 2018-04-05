@@ -6,6 +6,7 @@
 class Temperature {
 public:
     Temperature(uint8_t pin);
+    ~Temperature();
     void setUpSensors();
     float getTemp();
 private:

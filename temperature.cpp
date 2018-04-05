@@ -6,6 +6,10 @@ Temperature::Temperature(uint8_t pin) {
     setUpSensors();
 }
 
+Temperature::~Temperature() {
+  delete oneWire;
+}
+
 void Temperature::setUpSensors() {
   sensors.begin();
   numberOfDevices = sensors.getDeviceCount();
