@@ -4,6 +4,10 @@ Lcd::Lcd() {
     lcd->begin();
 }
 
+Lcd::~Lcd() {
+    delete lcd;
+}
+
 void Lcd::print(float temp, float target, bool fanOn) {
     lcd->clear();
     lcd->print("Temp ");

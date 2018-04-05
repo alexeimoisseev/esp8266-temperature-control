@@ -5,6 +5,7 @@
 class Lcd {
 public:
     Lcd();
+    ~Lcd();
     void print(float, float, bool);
     void print(String);
 private:
