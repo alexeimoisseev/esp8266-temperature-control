@@ -5,6 +5,7 @@
 class PubSub {
 public:
     PubSub();
+    ~PubSub();
     void sendTemp(float temp);
     void connect();
 private:

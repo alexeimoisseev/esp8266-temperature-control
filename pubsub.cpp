@@ -10,6 +10,10 @@ PubSub::PubSub() {
 
 }
 
+PubSub::~PubSub() {
+    delete client;
+}
+
 void PubSub::connect() {
     client->connect("ESP8266Client", PUB_SUB_USERNAME, PUB_SUB_KEY);
 }
