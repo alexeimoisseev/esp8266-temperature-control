@@ -7,8 +7,8 @@
 
 Temperature temperature(D3);
 Lcd lcd;
-PubSub *pubsub = new PubSub();
-float targetTemperature = 18.0;
+PubSub pubsub;
+float targetTemperature = 5.0;
 void connectWifi() {
   WiFi.begin(WIFI_SSID, WIFI_PASS);
   lcd.print("Connecting to WiFi...");
@@ -21,7 +21,7 @@ void connectWifi() {
 void setup() {
   Serial.begin(115200);
   connectWifi();
-  pubsub->connect();
+  pubsub.connect();
   pinMode(D5, OUTPUT);
 }
 
@@ -40,7 +40,7 @@ void loop() {
   float temp = temperature.getTemp();
   Serial.println(temp);
   checkTemp(temp);
-  pubsub->sendTemp(temp);
+  pubsub.sendTemp(temp);
   lcd.print(temp, targetTemperature, fanOn);
 
   delay(10000);
