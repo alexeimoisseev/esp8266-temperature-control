@@ -9,6 +9,7 @@ Temperature temperature(D3);
 Lcd lcd;
 PubSub pubsub;
 float targetTemperature = 5.0;
+float diff = 0.2;
 void connectWifi() {
   WiFi.begin(WIFI_SSID, WIFI_PASS);
   lcd.print("Connecting to WiFi...");
@@ -27,10 +28,10 @@ void setup() {
 
 bool fanOn = false;
 void checkTemp(float temp) {
-  if (!fanOn && temp > targetTemperature + 0.5) {
+  if (!fanOn && temp >= targetTemperature + diff) {
     fanOn = true;
     digitalWrite(D5, HIGH);
-  } else if (fanOn && temp < targetTemperature - 0.5) {
+  } else if (fanOn && temp <= targetTemperature - diff) {
     fanOn = false;
     digitalWrite(D5, LOW);
   }
